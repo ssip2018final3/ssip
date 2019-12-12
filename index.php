@@ -43,7 +43,9 @@ include('config.php');
 					<th>NAMA MAHASISWA</th>
 					<th>JENIS KELAMIN</th>
 					<th>JURUSAN</th>
+					<th>BATCH</th>
 					<th>EMAIL</th>
+					<th>ADDRESS</th>
 					<th>MOBILE</th>
 					<th>AKSI</th>
 				</tr>
@@ -66,7 +68,9 @@ include('config.php');
 							<td>'.$data['nama'].'</td>
 							<td>'.$data['jenis_kelamin'].'</td>
 							<td>'.$data['jurusan'].'</td>
+							<td>'.$data['batch'].'</td>
 							<td>'.$data['email'].'</td>
+							<td>'.$data['address'].'</td>
 							<td>'.$data['handphone'].'</td>
 							<td>
 								<a href="edit.php?id='.$data['id'].'" class="badge badge-warning">Edit</a>
