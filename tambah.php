@@ -38,13 +38,15 @@
 			$nama			= $_POST['nama'];
 			$jenis_kelamin	= $_POST['jenis_kelamin'];
 			$jurusan		= $_POST['jurusan'];
+			$batch			= $_POST['batch'];
 			$email			= $_POST['email'];
+			$address		= $_POST['address'];
 			$handphone		= $_POST['handphone'];
 			
 			$cek = mysqli_query($koneksi, "SELECT * FROM mahasiswa WHERE nim='$nim'") or die(mysqli_error($koneksi));
 			
 			if(mysqli_num_rows($cek) == 0){
-				$sql = mysqli_query($koneksi, "INSERT INTO mahasiswa(nim, nama, jenis_kelamin, jurusan, email, handphone) VALUES('$nim', '$nama', '$jenis_kelamin', '$jurusan', '$email', '$handphone')") or die(mysqli_error($koneksi));
+				$sql = mysqli_query($koneksi, "INSERT INTO mahasiswa(nim, nama, jenis_kelamin, jurusan, batch, email, address, handphone) VALUES('$nim', '$nama', '$jenis_kelamin', '$jurusan', '$batch', '$email',	'$address', '$handphone')") or die(mysqli_error($koneksi));
 				
 				if($sql){
 					echo '<script>alert("Berhasil menambahkan data."); document.location="tambah.php";</script>';
@@ -96,9 +98,21 @@
 				</div>
 			</div>
 			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">BATCH</label>
+				<div class="col-sm-10">
+					<input type="text" name="batch" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">EMAIL</label>
 				<div class="col-sm-10">
 					<input type="text" name="email" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">ADDRESS</label>
+				<div class="col-sm-10">
+					<input type="text" name="address" class="form-control" required>
 				</div>
 			</div>
 			<div class="form-group row">
