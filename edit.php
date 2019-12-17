@@ -58,6 +58,8 @@
 		if(isset($_POST['submit'])){
 			$nim			= $_POST['nim'];
 			$nama			= $_POST['nama'];
+			$tempat_lahir	= $_POST['tempat_lahir'];
+			$tanggal_lahir	= $_POST['tanggal_lahir'];
 			$jenis_kelamin	= $_POST['jenis_kelamin'];
 			$jurusan		= $_POST['jurusan'];
 			$batch			= $_POST['batch'];
@@ -65,7 +67,7 @@
 			$address		= $_POST['address'];
 			$handphone		= $_POST['handphone'];
 			
-			$sql = mysqli_query($koneksi, "UPDATE mahasiswa SET nim='$nim', nama='$nama', jenis_kelamin='$jenis_kelamin', jurusan='$jurusan', batch='$batch', email='$email', address='$address', handphone='$handphone' WHERE id='$id'") or die(mysqli_error($koneksi));
+			$sql = mysqli_query($koneksi, "UPDATE mahasiswa SET nim='$nim', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', jenis_kelamin='$jenis_kelamin', jurusan='$jurusan', batch='$batch', email='$email', address='$address', handphone='$handphone' WHERE id='$id'") or die(mysqli_error($koneksi));
 			
 			if($sql){
 				echo '<script>alert("Berhasil menyimpan data."); document.location="edit.php?id='.$id.'";</script>';
@@ -86,6 +88,18 @@
 				<label class="col-sm-2 col-form-label">NAMA MAHASISWA</label>
 				<div class="col-sm-10">
 					<input type="text" name="nama" class="form-control" value="<?php echo $data['nama']; ?>" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">TEMPAT LAHIR</label>
+				<div class="col-sm-10">
+					<input type="text" name="tempat_lahir" class="form-control" value="<?php echo $data['tempat_lahir']; ?>" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">TANGGAL LAHIR</label>
+				<div class="col-sm-10">
+					<input type="text" name="tanggal_lahir" class="form-control" placeholder="yyyy/mm/dd" value="<?php echo $data['tanggal_lahir']; ?>" required>
 				</div>
 			</div>
 			<div class="form-group row">
