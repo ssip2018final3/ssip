@@ -29,12 +29,12 @@ include('config.php');
 			</div>
 		</div>
 	</nav>
-	
+
 	<div class="container" style="margin-top:20px">
 		<h2>Daftar Mahasiswa</h2>
 		
 		<hr>
-		
+	
 		<table class="table table-striped table-hover table-sm table-bordered">
 			<thead class="thead-dark">
 				<tr>
@@ -51,6 +51,7 @@ include('config.php');
 				</tr>
 			</thead>
 			<tbody>
+			   </tr>
 				<?php
 				//query ke database SELECT tabel mahasiswa urut berdasarkan id yang paling besar
 				$sql = mysqli_query($koneksi, "SELECT * FROM mahasiswa ORDER BY id DESC") or die(mysqli_error($koneksi));
@@ -88,10 +89,13 @@ include('config.php');
 					</tr>
 					';
 				}
+				
 				?>
 			<tbody>
 		</table>
-		
+		<form method="post" action="export.php">
+     <input type="submit" name="export" class="btn btn-success" value="Excel" />
+    </form>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
