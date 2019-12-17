@@ -34,20 +34,22 @@ include('config.php');
 		<h2>Daftar Mahasiswa</h2>
 		
 		<hr>
-	
+
 		<table class="table table-striped table-hover table-sm table-bordered">
-			<thead class="thead-dark">
+			<thead class="thead-dark">	
 				<tr>
-					<th>NO.</th>
-					<th>NIM</th>
-					<th>NAMA MAHASISWA</th>
-					<th>JENIS KELAMIN</th>
-					<th>JURUSAN</th>
-					<th>BATCH</th>
-					<th>EMAIL</th>
-					<th>ADDRESS</th>
-					<th>MOBILE</th>
-					<th>AKSI</th>
+					<th><center>ID</center></th>
+					<th><center>NIM</center></th>
+					<th><center>NAMA MAHASISWA</center></th>
+					<th><center>TEMPAT LAHIR</center></th>
+					<th><center>TANGGAL LAHIR</center></th>
+					<th><center>JENIS KELAMIN</center></th>
+					<th><center>JURUSAN</center></th>
+					<th><center>BATCH</center></th>
+					<th><center>EMAIL</center></th>
+					<th><center>ADDRESS</center></th>
+					<th><center>MOBILE</center></th>
+					<th><center>AKSI</center></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -58,15 +60,17 @@ include('config.php');
 				//jika query diatas menghasilkan nilai > 0 maka menjalankan script di bawah if...
 				if(mysqli_num_rows($sql) > 0){
 					//membuat variabel $no untuk menyimpan nomor urut
-					$no = 1;
+					$id = 1;
 					//melakukan perulangan while dengan dari dari query $sql
 					while($data = mysqli_fetch_assoc($sql)){
 						//menampilkan data perulangan
 						echo '
 						<tr>
-							<td>'.$no.'</td>
+							<td>'.$id.'</td>
 							<td>'.$data['nim'].'</td>
 							<td>'.$data['nama'].'</td>
+							<td>'.$data['tempat_lahir'].'</td>
+							<td>'.$data['tanggal_lahir'].'</td>
 							<td>'.$data['jenis_kelamin'].'</td>
 							<td>'.$data['jurusan'].'</td>
 							<td>'.$data['batch'].'</td>
@@ -79,7 +83,7 @@ include('config.php');
 							</td>
 						</tr>
 						';
-						$no++;
+						$id++;
 					}
 				//jika query menghasilkan nilai 0
 				}else{
@@ -93,6 +97,7 @@ include('config.php');
 				?>
 			<tbody>
 		</table>
+
 		<form method="post" action="export.php">
      <input type="submit" name="export" class="btn btn-success" value="Excel" />
     </form>
