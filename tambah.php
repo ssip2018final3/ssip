@@ -36,6 +36,8 @@
 		if(isset($_POST['submit'])){
 			$nim			= $_POST['nim'];
 			$nama			= $_POST['nama'];
+			$tempat_lahir	= $_POST['tempat_lahir'];
+			$tanggal_lahir	= $_POST['tanggal_lahir'];
 			$jenis_kelamin	= $_POST['jenis_kelamin'];
 			$jurusan		= $_POST['jurusan'];
 			$batch			= $_POST['batch'];
@@ -46,7 +48,7 @@
 			$cek = mysqli_query($koneksi, "SELECT * FROM mahasiswa WHERE nim='$nim'") or die(mysqli_error($koneksi));
 			
 			if(mysqli_num_rows($cek) == 0){
-				$sql = mysqli_query($koneksi, "INSERT INTO mahasiswa(nim, nama, jenis_kelamin, jurusan, batch, email, address, handphone) VALUES('$nim', '$nama', '$jenis_kelamin', '$jurusan', '$batch', '$email',	'$address', '$handphone')") or die(mysqli_error($koneksi));
+				$sql = mysqli_query($koneksi, "INSERT INTO mahasiswa(nim, nama, tempat_lahir, tanggal_lahir, jenis_kelamin, jurusan, batch, email, address, handphone) VALUES('$nim', '$nama','$tempat_lahir', '$tanggal_lahir', '$jenis_kelamin', '$jurusan', '$batch', '$email', '$address', '$handphone')") or die(mysqli_error($koneksi));
 				
 				if($sql){
 					echo '<script>alert("Berhasil menambahkan data."); document.location="tambah.php";</script>';
@@ -70,6 +72,18 @@
 				<label class="col-sm-2 col-form-label">NAMA MAHASISWA</label>
 				<div class="col-sm-10">
 					<input type="text" name="nama" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">TEMPAT LAHIR</label>
+				<div class="col-sm-10">
+					<input type="text" name="tempat_lahir" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">TANGGAL LAHIR</label>
+				<div class="col-sm-10">
+					<input type="text" name="tanggal_lahir" class="form-control" placeholder="yyyy/mm/dd" required>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -130,6 +144,11 @@
 		</form>
 		
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#tanggal_lahir").datetimepicker({dateformat : 'yyyy/mm/dd'});
+		});
+	</script>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
